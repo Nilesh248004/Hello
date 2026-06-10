@@ -1,0 +1,42 @@
+name: Print and Run Python Files on macOS
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  print-and-run-python-files:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Print HelloWorld.py content
+        run: |
+          echo "----- HelloWorld.py content -----"
+          cat HelloWorld.py
+
+      - name: Run HelloWorld.py
+        run: |
+          echo "----- Running HelloWorld.py -----"
+          python3 HelloWorld.py
+
+      - name: Print demo.py content
+        run: |
+          echo "----- demo.py content -----"
+          cat demo.py
+
+      - name: Run demo.py
+        run: |
+          echo "----- Running demo.py -----"
+          python3 demo.py
